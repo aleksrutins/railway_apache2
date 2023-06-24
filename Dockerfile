@@ -4,6 +4,8 @@ FROM php:8.2-apache
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Kolkata
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+# Remove apache2 warnning 
+RUN echo 'ServerName 0.0.0.0' >> /etc/apache2/apache2.conf
 # Working directory
 WORKDIR /var/www/html
 # Copy the website files 
